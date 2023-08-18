@@ -8,7 +8,6 @@ const authSlice = createSlice({
     initialState:initialAuthState,
     reducers: {
         login(state, action) {
-            console.log(action.payload)
             state.tokenId = action.payload.idToken
             state.isLoggedIn = true
             state.isPremium = action.payload.isPremium

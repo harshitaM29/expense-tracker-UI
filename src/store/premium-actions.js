@@ -11,7 +11,7 @@ export const fetchPremiumLeaderboardData = (tokenId) => {
             
         }
     catch(error) {
-                console.log(error)
+            throw new Error(error);
             
         };
     };
@@ -22,15 +22,14 @@ export const fetchDownloadedData = (tokenId) => {
        
         try {
             const response = await axios.get(`http://localhost:4000/user/getfilesdownloaded`, { headers: {"Authorization" : tokenId } });
-            console.log(response.data)
+            
             dispatch(premiumActions.replaceDownloadedItems({
                 downloadedData:response.data || []
             }))
             
         }
     catch(error) {
-                console.log(error)
-            
+        throw new Error(error);
         };
     };
 }

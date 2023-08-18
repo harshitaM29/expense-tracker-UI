@@ -16,7 +16,7 @@ export const fetchExpenseData = (tokenId,page,limit) => {
             
         }
     catch(error) {
-                console.log(error)
+        throw new Error(error);
             
         };
     };
@@ -30,7 +30,7 @@ export const sendExpenseItems = (expense, tokenId) => {
                dispatch(expenseActions.addExpenses(response.data))
             }
            catch(err) {
-            console.log(err)
+            throw new Error(err);
            }
         
     }
@@ -48,7 +48,7 @@ export const deleteExpenseItems = (id,token) => {
             const expenseData = await deleteData();
             dispatch(expenseActions.deleteExpense(expenseData.id))
            } catch (error) {
-               console.log(error)
+            throw new Error(error);
            
        };
     

@@ -11,8 +11,6 @@ const Report = () => {
     const token = localStorage.getItem('token');
     const dispatch = useDispatch();
     const data = useSelector(state => state.premium.downloadedData)
-    
-    console.log(data);
     useEffect(() => {
        dispatch(fetchDownloadedData(token));
     },[dispatch])
@@ -21,7 +19,6 @@ const Report = () => {
         try {
 
             const response = await axios.get('http://localhost:4000/user/download', { headers: {"Authorization" : token } })
-            console.log(response)
             if(response.status === 200) {
                 var a = document.createElement('a');
                 a.href = response.data.fileURL;
@@ -32,7 +29,7 @@ const Report = () => {
                 throw new Error(response.data.message)
             }
         } catch(err) {
-            console.log(err)
+            throw new Error(err);
         }
     }
     return (

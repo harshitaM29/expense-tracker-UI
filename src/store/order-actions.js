@@ -8,7 +8,7 @@ export const createOrder = (Razorpay,token) => {
        
         try {
             const response = await axios.get(`http://localhost:4000/purchase/premiummembership`, { headers: {"Authorization" : token } });
-            console.log(response);
+           
             var options = {
                 "key": response.data.key_id,
                 "order_id": response.data.response.id,
@@ -17,7 +17,7 @@ export const createOrder = (Razorpay,token) => {
                         order_id: options.order_id,
                         payment_id:response.razorpay_payment_id, 
                 }, { headers: {"Authorization" : token } }) 
-                console.log('res',res.data)
+               
                 dispatch(setTokenId(res.data))
                    alert('You are Premium User Now');
                    window.location.reload();
@@ -35,12 +35,12 @@ export const createOrder = (Razorpay,token) => {
             }, { headers: {"Authorization" : token } }) 
                
         }catch(err) {
-            console.log(err)
+            throw new Error(err);
         }
             })
         }
     catch(error) {
-                console.log(error)
+               
                 alert('Something went wrong');
             
         };

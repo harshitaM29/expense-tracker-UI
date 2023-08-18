@@ -13,7 +13,6 @@ const ForgetPassword = () => {
         const response = await axios.post('http://localhost:4000/password/forgetpassword',{email:enteredEmail});
         setIsLoading(false);
           if(response) {
-            console.log(response);
             alert(response.data.message)
           }
         } catch(err) {

@@ -1,7 +1,7 @@
 import classes from './Report.module.css';
 import { Container } from 'react-bootstrap';
 const ReportItem = (props) => {
-    console.log(props.key)
+   
     return (
         <li key={props.key}>
                 

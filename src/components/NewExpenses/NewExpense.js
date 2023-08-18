@@ -12,7 +12,6 @@ const NewExpense = (props) => {
            
 
         };
-        console.log(expenseData)
         props.onAddExpense(expenseData);
     };
     const openForm = ()  => {

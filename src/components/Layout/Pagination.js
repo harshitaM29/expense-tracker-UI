@@ -8,8 +8,6 @@ import React from 'react';
 const Pagination = () => {
     const tokenId = localStorage.getItem('token');
     const storedLimit = localStorage.getItem('limit');
-    const receivedExpenses = useSelector(state => state.expense.expense);
-    console.log(receivedExpenses);
     const dispatch = useDispatch();
     const currentPage = useRef();
     const [limit,setLimit] = useState(storedLimit || 10);
