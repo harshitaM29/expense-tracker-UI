@@ -1,0 +1,17 @@
+.nav {
+    background-color: gray;
+}
+.nav button {
+    background-color: teal;
+    color: white;
+
+}
+
+.nav button:hover {
+    background-color: rgb(45, 198, 198);
+    border-color: rgb(45, 198, 198);
+  }
+
+  .nav button:disabled {
+    background-color: gray; 
+  }

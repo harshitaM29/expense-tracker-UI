@@ -1,0 +1,14 @@
+.button {
+    margin-left: 0.5rem;
+    background-color: teal;
+    color: white;
+
+}
+
+.button:hover {
+    background-color: rgb(6, 95, 95);
+    border-color: rgb(6, 95, 95);
+}
+.input {
+    margin-left: 2rem;
+}
