@@ -30,7 +30,7 @@ const Login = () => {
         }
        setIsLoading(true);
         try {
-        const response = await axios.post('http://localhost:4000/user/login',loginData);
+        const response = await axios.post('http://16.171.194.246:4000/user/login',loginData);
         setIsLoading(false);
           if(response) {
             

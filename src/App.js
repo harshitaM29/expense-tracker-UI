@@ -2,7 +2,7 @@ import React from 'react';
 import LoginPage from './pages/LoginPage';
 import { lazy,Suspense } from 'react';
 import SignUpPage from './pages/SignUpPage';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import {useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -41,11 +41,13 @@ function App() {
       <SignUpPage />
     </Route>
     <Route path = '/home' >
-      <HomePage />
+     {isLoggedIn && <HomePage /> }
+     {!isLoggedIn && <Redirect to='/' />}
     </Route>
     <Route path = '/leaderboard'>
     <Suspense fallback={renderLoader()}>
-     <Leaderboard />
+     {isLoggedIn && <Leaderboard /> }
+     {!isLoggedIn && <Redirect to='/' />}
       </Suspense>
     </Route>
     <Route path='/forget'>
@@ -56,7 +58,8 @@ function App() {
     </Route>
     <Route path='/report'>
     <Suspense fallback={renderLoader()}>
-      <Report />
+     {isLoggedIn && <Report /> }
+      {!isLoggedIn && <Redirect to='/' />}
       </Suspense>
     </Route>
    

@@ -10,7 +10,7 @@ const ForgetPassword = () => {
         const enteredEmail = emailInputRef.current.value;
        setIsLoading(true);
         try {
-        const response = await axios.post('http://localhost:4000/password/forgetpassword',{email:enteredEmail});
+        const response = await axios.post('http://16.171.194.246:4000/password/forgetpassword',{email:enteredEmail});
         setIsLoading(false);
           if(response) {
             alert(response.data.message)

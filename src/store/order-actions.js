@@ -7,13 +7,13 @@ export const createOrder = (Razorpay,token) => {
     return async(dispatch) => {
        
         try {
-            const response = await axios.get(`http://localhost:4000/purchase/premiummembership`, { headers: {"Authorization" : token } });
+            const response = await axios.get(`http://16.171.194.246:4000/purchase/premiummembership`, { headers: {"Authorization" : token } });
            
             var options = {
                 "key": response.data.key_id,
                 "order_id": response.data.response.id,
                 "handler": async function(response) {
-                 const res = await axios.post('http://localhost:4000/purchase/updatetransactionstatus', {
+                 const res = await axios.post('http://16.171.194.246:4000/purchase/updatetransactionstatus', {
                         order_id: options.order_id,
                         payment_id:response.razorpay_payment_id, 
                 }, { headers: {"Authorization" : token } }) 
@@ -29,7 +29,7 @@ export const createOrder = (Razorpay,token) => {
             rzp1.on('payment.failed', async function(response){
                 alert('Transaction Failed');
                try {
-                await axios.post('http://localhost:4000/purchase/updatetransactionstatus', {
+                await axios.post('http://16.171.194.246:4000/purchase/updatetransactionstatus', {
                     order_id: options.order_id,
                     payment_id:response.razorpay_payment_id, 
             }, { headers: {"Authorization" : token } }) 

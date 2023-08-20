@@ -18,7 +18,7 @@ const Report = () => {
       
         try {
 
-            const response = await axios.get('http://localhost:4000/user/download', { headers: {"Authorization" : token } })
+            const response = await axios.get('http://16.171.194.246:4000/user/download', { headers: {"Authorization" : token } })
             if(response.status === 200) {
                 var a = document.createElement('a');
                 a.href = response.data.fileURL;

@@ -1,12 +1,11 @@
 import { expenseActions } from './expenses';
 import axios from 'axios';
-import { pageActions } from './page';
 
 export const fetchExpenseData = (tokenId,page,limit) => {
     return async(dispatch) => {
        
         try {
-            const response = await axios.get(`http://localhost:4000/expenses?page=${page}&limit=${limit}`, { headers: {"Authorization" : tokenId } });
+            const response = await axios.get(`http://16.171.194.246:4000/expenses?page=${page}&limit=${limit}`, { headers: {"Authorization" : tokenId } });
            
             dispatch(expenseActions.replaceExpense({
                 expense: response.data || [],
@@ -26,7 +25,7 @@ export const sendExpenseItems = (expense, tokenId) => {
  
     return async(dispatch) => {
             try {
-            const response = await axios.post(`http://localhost:4000/expenses`,expense, { headers: {"Authorization" : tokenId } })
+            const response = await axios.post(`http://16.171.194.246:4000/expenses`,expense, { headers: {"Authorization" : tokenId } })
                dispatch(expenseActions.addExpenses(response.data))
             }
            catch(err) {
@@ -39,7 +38,7 @@ export const sendExpenseItems = (expense, tokenId) => {
 export const deleteExpenseItems = (id,token) => {
     return async(dispatch) => {
         const deleteData = async() => {
-            const response = await axios.delete(`http://localhost:4000/expense-delete/${id}`, { headers: {"Authorization" : token }});
+            const response = await axios.delete(`http://16.171.194.246:4000/expense-delete/${id}`, { headers: {"Authorization" : token }});
             
             return response.data;
         }
